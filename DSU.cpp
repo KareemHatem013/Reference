@@ -1,6 +1,8 @@
 struct DSU {
     vector<int> parent, size;
+
     DSU(int n) {
+        parent = size = vector<int>(n + 1);
         for (int i = 0; i <= n; i++) {
             parent[i] = i;
             size[i] = 1;
