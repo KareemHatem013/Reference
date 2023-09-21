@@ -1,30 +1,33 @@
-struct DSU{
-    vector<int>parent,size;
-    DSU(int n){
-        parent = size = vector<int>(n+1);
-        for(int i=0;i<=n;i++){
+struct DSU {
+    vector<int> parent, size;
+    DSU(int n) {
+        for (int i = 0; i <= n; i++) {
             parent[i] = i;
             size[i] = 1;
         }
     }
-    int leader(int x){
-        if(x==parent[x])return x;
-        return parent[x] = leader(parent[x]);
+
+    int FindLeader(int i) {
+        if (parent[i] == i) return i;
+        return parent[i] = FindLeader(parent[i]);
     }
-    bool samegroup(int u,int v){
-        return leader(u) ==leader(v);
+
+    bool SameGroup(int x, int y) {
+        int leader1 = FindLeader(x);
+        int leader2 = FindLeader(y);
+        return leader1 == leader2;
     }
-    //merge by size
-    void merge(int u,int v){
-        u = leader(u);
-        v = leader(v);
-        if(u==v)return;
-        if(size[u] >= size[v]){
-            parent[v] = u;
-            size[u]+=size[v];
-        }else{
-            parent[u] = v;
-            size[v]+=size[u];
+
+    void MergeGroups(int x, int y) {
+        int leader1 = FindLeader(x);
+        int leader2 = FindLeader(y);
+        if (leader1 == leader2) return;
+        if (size[leader1] > size[leader2]) {
+            parent[leader2] = leader1;
+            size[leader1] += size[leader2];
+        } else {
+            parent[leader1] = leader2;
+            size[leader2] += size[leader1];
         }
     }
 };
