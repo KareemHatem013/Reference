@@ -14,16 +14,10 @@ struct DSU {
         return parent[i] = FindLeader(parent[i]);
     }
 
-    bool SameGroup(int x, int y) {
+    bool MergeGroups(int x, int y) {
         int leader1 = FindLeader(x);
         int leader2 = FindLeader(y);
-        return leader1 == leader2;
-    }
-
-    void MergeGroups(int x, int y) {
-        int leader1 = FindLeader(x);
-        int leader2 = FindLeader(y);
-        if (leader1 == leader2) return;
+        if (leader1 == leader2) return false;
         if (size[leader1] > size[leader2]) {
             parent[leader2] = leader1;
             size[leader1] += size[leader2];
@@ -31,5 +25,6 @@ struct DSU {
             parent[leader1] = leader2;
             size[leader2] += size[leader1];
         }
+        return true;
     }
 };
