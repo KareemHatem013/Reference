@@ -1,4 +1,4 @@
-const int N = 2e5+5;
+//undirected
 vector<int>adj[N];
 int dfn[N],low[N];
 set<int>points;
