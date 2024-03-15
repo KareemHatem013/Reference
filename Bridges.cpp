@@ -1,10 +1,8 @@
-const int N = 2e5+5;
-vector<pair<int,int>>adj[N];
-map<pair<int,int>,int>mp;
+vector<int>adj[N];
 int dfn[N],low[N],timer;
 void bridges(int node,int parent){
     dfn[node] = low[node] = ++timer;
-    for(auto&[ch,x] : adj[node]){
+    for(auto&ch : adj[node]){
         if(ch == parent)continue;
         if(dfn[ch] == -1){
             bridges(ch,node);
