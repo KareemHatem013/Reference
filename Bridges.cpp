@@ -1,3 +1,4 @@
+//undirected
 vector<int>adj[N];
 int dfn[N],low[N],timer;
 void bridges(int node,int parent){
