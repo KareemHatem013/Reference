@@ -12,15 +12,13 @@ void fft(vector<cd>&a,bool invert){
     fft(a1,invert); // a(x) = a0(x^2) + x * a0(x^2)
     double angle = 2*PI/n * (invert ? -1 : 1);
     cd w = 1, wn(cos(angle),sin(angle));
-    for(int i=0;i<n;i++){
-        if(i*2 < n){
-            a[i] = a0[i] + w * a1[i];
-        }else{
-            a[i] = a0[i - n/2] + w * a1[i - n/2];
-        }
+    for(int i=0;i<n/2;i++){
+        a[i] = a0[i] + w * a1[i];
+        a[i + n/2] = a0[i] - w * a1[i];
         w*= wn;
         if(invert){
             a[i]/=2;
+            a[i + n/2]/=2;
         }
     }
 }
