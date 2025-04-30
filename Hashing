@@ -3,12 +3,12 @@ private:
     const ll mod = (1ll << 61) - 1;
     static ll base;
     int sz;
-    vector<ll>hPre,hSuf,pow;
+    vector<ll>hPre,pow;
     //pow[i] = base^i
 public:
     Hashing(const string&s,char st = 'a'){ // 1-based
         sz = sz(s);
-        hPre = hSuf = pow = vector<ll>(sz + 1);
+        hPre  = pow = vector<ll>(sz + 1);
         pow[0] = 1;
         for(int i = 1; i <= sz;i++){
             pow[i] = (__int128_t)pow[i-1]*base % mod;
