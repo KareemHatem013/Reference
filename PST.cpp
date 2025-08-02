@@ -1,4 +1,3 @@
-//problem link : https://cses.fi/problemset/task/1734/
 struct Node {
     Node *left, *right;
     ll val;
