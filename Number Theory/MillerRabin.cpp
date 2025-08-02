@@ -1,3 +1,9 @@
+// n < 4,759,123,141        3 :  2, 7, 61
+// n < 1,122,004,669,633    4 :  2, 13, 23, 1662803
+// n < 3,474,749,660,383          6 :  pirmes <= 13
+// n < 2^64                       7 :
+// 2, 325, 9375, 28178, 450775, 9780504, 1795265022
+// Make sure testing integer is in range [2, n−2] if
 //The largest known gap between consecutive primes ≤ 1e9 is 282, ≤ 1e12 ≤ 1132
 using u64 = uint64_t;
 using u128 = __uint128_t;
