@@ -27,7 +27,8 @@ void fft(vector<cd> &a, bool invert) {
         }
     }
 }
-vector<ll> multiply(vector<ll> &a, vector<ll> &b) {
+//don't send the same vector twice 
+vector<ll> conv(const vector<ll> &a,const vector<ll> &b) {
     int n = 1;
     while (n < sz(a) + sz(b))n <<= 1;
     vector<cd> fa(all(a)), fb(all(b));
@@ -44,4 +45,15 @@ vector<ll> multiply(vector<ll> &a, vector<ll> &b) {
         res[i] = round(fa[i].real());
     }
     return res;
+}
+vector<ll>polyPow(vector<ll>a,ll k){
+    vector<ll>ans = {1};
+    while(k){
+        if(k&1){
+            ans = conv(ans,a);
+        }
+        k>>=1;
+        a = conv(a,a);
+    }
+    return ans;
 }
