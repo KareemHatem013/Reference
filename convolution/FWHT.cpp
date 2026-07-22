@@ -1,5 +1,5 @@
 //const int mod = 998244353;
-// big mod if overflow can happen (ans < mod)
+// big mod if overflow can happen
 const ll mod = 1000000000000000003LL;
 
 // if using big mode add this
@@ -53,6 +53,8 @@ vector<ll> mul(vector<ll> a, vector<ll> b, int f) { // 0:AND, 1:OR, 2:XOR
     vector<ll> c(sz);
     for (int i = 0; i < sz; ++i) {
         c[i] = mul_mod(a[i],b[i]);
+        //can use raise to power trick instead of mul x times like normal FFT
+        //c[i] = poww(c[i],x);
     }
     fwht(c, 1, f);
     if (f == 2) {
