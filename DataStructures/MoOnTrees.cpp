@@ -1,4 +1,5 @@
-//https://vjudge.net/contest/636856#problem/K
+//Given a tree where each node has an assigned value, 
+// answer multiple queries asking if a specific value exists on the simple path between two nodes.
 vector<vector<int>> adj;
 int root;
 const int N = 1e5 + 5;
